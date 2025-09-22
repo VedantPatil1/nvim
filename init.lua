@@ -16,7 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
 require("config.keymaps")
 
-vim.cmd("colorscheme kanagawa-dragon")
+vim.cmd("colorscheme tokyonight-night")
 
 -- Configs not dependent on Plugins.
 -- Can be replicated in bear vim.
