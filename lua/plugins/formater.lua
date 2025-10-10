@@ -14,7 +14,10 @@ return {
           terraform = { "terraform_fmt", "terraform"},
           tf = { "terraform_fmt", "terraform" },
           ["terraform-vars"] = { "terraform_fmt" },
-          robot = {'robotidy', 'robotframework_ls', 'robocode'}
+          robot = {'robotidy', 'robotframework_ls', 'robocode'},
+          html = {"prettier"},
+          css = {"prettier"},
+          tmpl = {"templ", "prettier"}
         },
         formatters = {
           ruff_fix = {

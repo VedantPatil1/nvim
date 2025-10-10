@@ -1,6 +1,6 @@
 -- Line numbers
 vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 
 -- Tabs and indentation (fallback default)
 vim.opt.tabstop = 4

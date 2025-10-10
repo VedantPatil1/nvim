@@ -17,3 +17,5 @@ keymap("n", "<leader><tab>n", "<cmd>tabnew<CR>", opts, { desc = "[Tab] [N]ew"})
 
 keymap("n", "<leader>cd", "<cmd>lua vim.lsp.buf.hover()<CR>", opts, { desc = "[c]ode [d]ocs"})
 vim.api.nvim_set_keymap('t', '<Esc>', '<C-\\><C-n>', { noremap = true, silent = true })
+
+keymap("n", "<leader>wt", "<cmd>15split | terminal<CR>", opts, { desc = "[W]indow split [t]erminal"})
