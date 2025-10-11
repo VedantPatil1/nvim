@@ -12,6 +12,11 @@ return {
       desc="Find Files in current Working Directory."
     },
     {
+      "<Leader>fb",
+      function() require('fzf-lua').buffers() end,
+      desc="Find Files in current Working Directory."
+    },
+    {
       "<Leader>fn",
       function() require('fzf-lua').files({ cwd=vim.fn.stdpath("config") }) end,
       desc="[F]ind in [N]eovim Config Directory."
