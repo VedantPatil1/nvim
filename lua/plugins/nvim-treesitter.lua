@@ -24,6 +24,7 @@ return {
           "luap",
           "markdown",
           "terraform",
+          "templ",
           "markdown_inline",
           "printf",
           "python",

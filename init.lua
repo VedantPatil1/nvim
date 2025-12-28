@@ -1,3 +1,5 @@
+vim.filetype.add({ extension = { templ = "templ" } })
+
 vim.g.mapleader = " "
 
 -- lazy plugin manager

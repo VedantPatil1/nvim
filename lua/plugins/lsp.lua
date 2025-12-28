@@ -239,8 +239,11 @@ return {
         --
         robotcode = {},
         robotframework_ls = {},
-        html ={},
+        html ={
+          filetypes = { "html", "templ" },
+        },
         terraformls = {},
+        templ ={},
         lua_ls = {
           settings = {
             Lua = {
