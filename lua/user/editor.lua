@@ -35,3 +35,6 @@ vim.opt.splitright = true
 -- Undo
 vim.opt.undofile = true
 
+-- Completion settings (nvim-cmp will handle this)
+vim.opt.completeopt = { "menu", "menuone", "noselect" }
+
