@@ -51,6 +51,14 @@ return {
         { name = 'buffer' },
         { name = 'path' },
       }),
+      window = {
+        documentation = {
+          border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+          max_width = 80,
+          max_height = 25,
+          winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
+        },
+      },
     })
   end,
 }
