@@ -12,6 +12,9 @@ return {
 
     -- Load friendly-snippets
     require('luasnip.loaders.from_vscode').lazy_load()
+    
+    -- Load custom Lua snippets
+    require('snippets.templ')
 
     cmp.setup({
       snippet = {
