@@ -256,6 +256,9 @@ return {
         },
         terraformls = {},
         templ = {},
+        emmet_ls = {
+          filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "templ" },
+        },
         lua_ls = {
           settings = {
             Lua = {
