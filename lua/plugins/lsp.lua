@@ -239,11 +239,22 @@ return {
         --
         robotcode = {},
         robotframework_ls = {},
-        html ={
+        html = {
           filetypes = { "html", "templ" },
         },
+        htmx = {
+          filetypes = { "html", "templ" },
+        },
+        tailwindcss = {
+          filetypes = { "templ", "astro", "javascript", "typescript", "react" },
+          init_options = {
+            userLanguages = {
+              templ = "html",
+            },
+          },
+        },
         terraformls = {},
-        templ ={},
+        templ = {},
         lua_ls = {
           settings = {
             Lua = {
