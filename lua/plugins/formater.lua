@@ -11,6 +11,7 @@ return {
           go = { "goimports", "gofmt" },
           python = { "ruff_fix", "black" },
           hcl = { "packer_fmt" },
+          templ = {"templ"},
           terraform = { "terraform_fmt", "terraform"},
           tf = { "terraform_fmt", "terraform" },
           ["terraform-vars"] = { "terraform_fmt" },

@@ -5,7 +5,8 @@ local indent_settings = {
   go         = { shiftwidth = 8, tabstop = 8, softtabstop = 0, expandtab = false }, -- Go uses tabs by convention
   javascript = { shiftwidth = 2, tabstop = 2, softtabstop = 2, expandtab = true },
   html       = { shiftwidth = 2, tabstop = 2, softtabstop = 2, expandtab = true },
-  gohtml       = { shiftwidth = 2, tabstop = 2, softtabstop = 2, expandtab = true },
+  gohtml     = { shiftwidth = 2, tabstop = 2, softtabstop = 2, expandtab = true },
+  css        = { shiftwidth = 2, tabstop = 2, softtabstop = 2, expandtab = true },
   make       = { shiftwidth = 8, tabstop = 8, softtabstop = 0, expandtab = false }, -- Use tabs in Makefiles
   json       = { shiftwidth = 2, tabstop = 2, softtabstop = 2, expandtab = true },
   yaml       = { shiftwidth = 2, tabstop = 2, softtabstop = 2, expandtab = true },
