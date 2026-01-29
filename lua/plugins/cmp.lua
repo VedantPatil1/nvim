@@ -1,33 +1,48 @@
 return {
   'hrsh7th/nvim-cmp',
   dependencies = {
+    -- Core completion sources
     'hrsh7th/cmp-nvim-lsp',
+    'hrsh7th/cmp-buffer',
+    'hrsh7th/cmp-path',
+
+    -- Snippets
     'L3MON4D3/LuaSnip',
     'saadparwaiz1/cmp_luasnip',
     'rafamadriz/friendly-snippets',
+
+    -- Dadbod
+    'tpope/vim-dadbod',
+    'kristijanhusak/vim-dadbod-completion',
   },
+
   config = function()
     local cmp = require('cmp')
     local luasnip = require('luasnip')
 
-    -- Load friendly-snippets
+    -- Load VSCode-style snippets
     require('luasnip.loaders.from_vscode').lazy_load()
-    
-    -- Load custom Lua snippets
+
+    -- Load custom snippets
     require('snippets.templ')
 
+    -- ======================
+    -- Global cmp setup
+    -- ======================
     cmp.setup({
       snippet = {
         expand = function(args)
           luasnip.lsp_expand(args.body)
         end,
       },
+
       mapping = cmp.mapping.preset.insert({
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
+
         ['<Tab>'] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
@@ -37,6 +52,7 @@ return {
             fallback()
           end
         end, { 'i', 's' }),
+
         ['<S-Tab>'] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
@@ -47,6 +63,7 @@ return {
           end
         end, { 'i', 's' }),
       }),
+
       sources = cmp.config.sources({
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
@@ -54,15 +71,38 @@ return {
         { name = 'buffer' },
         { name = 'path' },
       }),
+
       window = {
         documentation = {
-          border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+          border = { '╭', '─', '╮', '│', '╯', '─', '╰', '│' },
           max_width = 80,
           max_height = 25,
-          winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
+          winhighlight = 'NormalFloat:NormalFloat,FloatBorder:FloatBorder',
         },
       },
     })
+
+    -- ======================
+    -- SQL / Dadbod completion
+    -- ======================
+    cmp.setup.filetype(
+      { 'sql_ft' },
+      {
+        sources = {
+          { name = 'dadbod', keyword_length = 2 },
+          { name = 'buffer' },
+        },
+      }
+    )
+
+    -- Dadbod UI buffers
+    cmp.setup.filetype(
+      { 'dbui', 'dbout' },
+      {
+        sources = {
+          { name = 'dadbod' },
+        },
+      }
+    )
   end,
 }
-

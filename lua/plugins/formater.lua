@@ -18,7 +18,10 @@ return {
           robot = {'robotidy', 'robotframework_ls', 'robocode'},
           html = {"prettier"},
           css = {"prettier"},
-          tmpl = {"templ", "prettier"}
+          tmpl = {"templ", "prettier"},
+          sql = { "sqlfluff" },
+          mysql = { "sqlfluff" },
+          plsql = { "sqlfluff" },
         },
         formatters = {
           ruff_fix = {
