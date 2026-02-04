@@ -35,6 +35,8 @@ return {
     lazy = false,
     priority = 1000,
   },
-  { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true, opts = ...}
+  { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true, opts = ...},
+  { 'Murtaza-Udaipurwala/gruvqueen', priority = 1000  },
+  { 'Shatur/neovim-ayu', priority = 1000  }
 }
 
