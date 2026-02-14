@@ -257,6 +257,9 @@ return {
         },
         terraformls = {},
         templ = {},
+        sqls = {
+          connections = {}, -- let Dadbod handle DB connections
+        },
         emmet_ls = {
           filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "templ" },
         },
