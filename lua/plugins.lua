@@ -52,3 +52,57 @@ vim.pack.add({
 })
 
 require("which-key").add({ { "<leader>c", group = "code" } })
+
+
+-- FZF
+
+vim.pack.add({
+    { src = "https://github.com/echasnovski/mini.icons" },
+    { src = "https://github.com/ibhagwan/fzf-lua" },
+})
+
+require("mini.icons").setup()
+require("fzf-lua").setup()
+
+require("which-key").add({ { "<leader>f", group = "find" } })
+
+
+-- Mini pairs
+
+vim.pack.add({
+    { src = "https://github.com/echasnovski/mini.pairs" },
+})
+
+require("mini.pairs").setup()
+
+
+-- Flash
+
+vim.pack.add({
+    { src = "https://github.com/folke/flash.nvim" },
+})
+
+require("flash").setup()
+
+
+-- Hardtime
+
+vim.pack.add({
+    { src = "https://github.com/MunifTanjim/nui.nvim" },
+    { src = "https://github.com/m4xshen/hardtime.nvim" },
+})
+
+require("hardtime").setup()
+
+
+-- Showkeys
+
+vim.pack.add({
+    { src = "https://github.com/nvzone/showkeys" },
+})
+
+require("showkeys").setup({
+    timeout  = 1,
+    maxkeys  = 4,
+    show_count = true,
+})

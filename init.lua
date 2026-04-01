@@ -4,5 +4,4 @@ require("keymaps")
 require("autocmds")
 require("lsp")
 require("format")
-
--- vim.cmd.colorscheme("techbase")
+require("opts")
