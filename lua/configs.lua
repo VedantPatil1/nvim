@@ -51,12 +51,10 @@ vim.opt.completeopt = { "menu", "menuone", "noselect", "popup" }
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
-    local bufnr = args.buf
-    -- This is the crucial link: tells native completion to use LSP
-    vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
-
-    -- Optional: Add 'k' (dictionary) or other sources to 'complete' for this buffer
-    -- vim.bo[bufnr].complete = ".,w,b,u,t"
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client and client:supports_method("textDocument/completion") then
+      vim.lsp.completion.enable(true, args.data.client_id, args.buf, { autotrigger = true })
+    end
   end,
 })
 -- Filetype
