@@ -15,12 +15,23 @@ keymap("o",               "r",     function() require("flash").remote() end,    
 keymap({ "o", "x" },      "R",     function() require("flash").treesitter_search() end, { desc = "Flash treesitter search" })
 keymap("c",               "<C-s>", function() require("flash").toggle() end,            { desc = "Toggle flash search" })
 
+-- Diagnostics
+keymap("n", "gl", function() vim.diagnostic.open_float() end, { desc = "Show line diagnostics" })
+
 -- FZF
 keymap("n", "<leader><leader>", function() require("fzf-lua").files() end,                                    { desc = "Find files" })
 keymap("n", "<leader>fb",       function() require("fzf-lua").buffers() end,                                  { desc = "Find buffers" })
 keymap("n", "<leader>fn",       function() require("fzf-lua").files({ cwd = vim.fn.stdpath("config") }) end,  { desc = "Find in nvim config" })
 keymap("n", "<leader>fg",       function() require("fzf-lua").live_grep() end,                                { desc = "Live grep" })
 keymap("n", "<leader>fh",       function() require("fzf-lua").helptags() end,                                 { desc = "Find help" })
+
+-- Todo comments
+keymap("n", "<leader>ft", function() require("todo-comments.fzf").todo() end,                                           { desc = "Find todos (workspace)" })
+keymap("n", "<leader>fT", function() require("todo-comments.fzf").todo({ cwd = vim.fn.expand("%:p:h") }) end,           { desc = "Find todos (file)" })
+keymap("n", "<leader>ff", function() require("todo-comments.fzf").todo({ keywords = { "FIX", "FIXME", "BUG" } }) end,  { desc = "Find fixmes" })
+
+-- Colorscheme
+keymap("n", "<leader>uc", function() require("fzf-lua").colorschemes() end, { desc = "Pick colorscheme" })
 
 -- Treesitter: textobjects
 local ts_select_obj = function(query, group)
