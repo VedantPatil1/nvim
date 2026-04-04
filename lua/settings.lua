@@ -35,18 +35,6 @@ return {
         yaml       = { "prettier" },
     },
 
-    parsers = {
-        "go", "gomod", "gowork", "gosum",
-        "templ",
-        "python",
-        "bash",
-        "html", "css", "javascript",
-        "json", "jsonc", "yaml",
-        "markdown", "markdown_inline",
-        "vim", "vimdoc", "diff",
-        "lua",
-    },
-
     indent = {
         lua        = { sw = 2, ts = 2, et = true  },
         python     = { sw = 4, ts = 4, et = true  },
