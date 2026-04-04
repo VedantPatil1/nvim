@@ -1,4 +1,4 @@
-require("plugins/init")
+require("plugins.init")
 require("plugins_")
 require("configs")
 require("keymaps")
