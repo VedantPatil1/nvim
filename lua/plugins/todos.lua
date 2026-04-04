@@ -1,5 +1,3 @@
-local s = require("settings")
-
 -- Todo Comments
 vim.pack.add({
     { src = "https://github.com/nvim-lua/plenary.nvim" },
@@ -20,9 +18,4 @@ require("todo-comments").setup({
         pattern = [[\b(KEYWORDS):]],
     },
 })
-
--- Flash
-vim.pack.add({ { src = "https://github.com/folke/flash.nvim" } })
-require("flash").setup()
-
 

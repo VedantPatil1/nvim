@@ -15,7 +15,6 @@ wk.add({
     { "<leader>w", group = "window"  },
 })
 
-local s = require("settings")
 -- Diagnostics
 keymap("n", "gl", function() vim.diagnostic.open_float() end, { desc = "Show line diagnostics" })
 
