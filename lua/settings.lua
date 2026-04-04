@@ -2,8 +2,6 @@
 -- No setup calls here — just data consumed by other files.
 
 return {
-    colorscheme = "techbase",
-
     enable = {
         hardtime = true,
         showkeys = false,
