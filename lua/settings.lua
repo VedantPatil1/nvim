@@ -22,19 +22,6 @@ return {
         "ts_ls",
     },
 
-    formatters = {
-        lua        = { "stylua"   },
-        python     = { "black"    },
-        go         = { "gofmt"    },
-        templ      = { "templ"    },
-        javascript = { "prettier" },
-        typescript = { "prettier" },
-        html       = { "prettier" },
-        css        = { "prettier" },
-        json       = { "prettier" },
-        yaml       = { "prettier" },
-    },
-
     indent = {
         lua        = { sw = 2, ts = 2, et = true  },
         python     = { sw = 4, ts = 4, et = true  },
