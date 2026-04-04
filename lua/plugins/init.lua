@@ -1,1 +1,4 @@
-require("plugins/colorschemes")
+require("plugins.utils")
+require("plugins.colorschemes")
+
+

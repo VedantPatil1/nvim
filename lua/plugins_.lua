@@ -1,17 +1,5 @@
 local s = require("settings")
 
--- which-key (load first so other plugins can register groups)
-vim.pack.add({ { src = "https://github.com/folke/which-key.nvim" } })
-require("which-key").setup()
-
--- GitSigns
-vim.pack.add({ { src = "https://github.com/lewis6991/gitsigns.nvim" } })
-require("gitsigns").setup({ signcolumn = false })
-
--- Mason
-vim.pack.add({ { src = "https://github.com/mason-org/mason.nvim" } })
-require("mason").setup({})
-
 -- Treesitter
 vim.pack.add({
     { src = "https://github.com/nvim-treesitter/nvim-treesitter" },
@@ -79,10 +67,6 @@ cmp.setup({
     },
 })
 
--- Dressing (better vim.ui.select / vim.ui.input as floating windows)
-vim.pack.add({ { src = "https://github.com/stevearc/dressing.nvim" } })
-require("dressing").setup()
-
 -- FZF
 vim.pack.add({
     { src = "https://github.com/echasnovski/mini.icons" },
@@ -112,24 +96,10 @@ require("todo-comments").setup({
     },
 })
 
--- Mini pairs
-vim.pack.add({ { src = "https://github.com/echasnovski/mini.pairs" } })
-require("mini.pairs").setup()
-
 -- Flash
 vim.pack.add({ { src = "https://github.com/folke/flash.nvim" } })
 require("flash").setup()
 
--- Hardtime
-vim.pack.add({
-    { src = "https://github.com/MunifTanjim/nui.nvim" },
-    { src = "https://github.com/m4xshen/hardtime.nvim" },
-})
-require("hardtime").setup()
-
--- Showkeys
-vim.pack.add({ { src = "https://github.com/nvzone/showkeys" } })
-require("showkeys").setup({ timeout = 1, maxkeys = 4, show_count = true })
 
 -- Copilot (ghost text only, no panel, no cmp source)
 vim.pack.add({ { src = "https://github.com/zbirenbaum/copilot.lua" } })
@@ -150,7 +120,3 @@ require("opencode").setup()
 -- Claude Code
 vim.pack.add({ { src = "https://github.com/coder/claudecode.nvim" } })
 require("claudecode").setup()
-
--- Feature toggles
-if s.enable.hardtime then require("hardtime").enable() end
-if s.enable.showkeys then vim.cmd("ShowkeysToggle")    end
