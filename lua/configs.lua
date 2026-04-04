@@ -39,16 +39,17 @@ opt.splitright = true
 opt.undofile  = true
 opt.swapfile  = false
 
--- Completion
-opt.autocomplete        = true
-opt.autocompletedelay   = 100
-opt.autocompletetimeout = 500
-opt.complete    = { ".", "w", "b", "u" }
-opt.completeopt = { "menu", "menuone", "noselect", "popup" }
+-- Completion (nvim-cmp manages the menu)
+opt.completeopt = { "menu", "menuone", "noselect" }
 
 -- Filetypes
 vim.cmd.filetype("plugin indent on")
 vim.filetype.add({ extension = { templ = "templ" } })
+
+-- LSP: broadcast cmp capabilities to all servers
+vim.lsp.config("*", {
+    capabilities = require("cmp_nvim_lsp").default_capabilities(),
+})
 
 -- LSP: enable servers (configs loaded from lsp/<name>.lua automatically)
 vim.lsp.enable(require("settings").lsp)

@@ -6,19 +6,31 @@ return {
 
     enable = {
         hardtime = true,
-        showkeys  = false,
+        showkeys = false,
+        copilot  = false,
+        opencode   = false,
+        claudecode = true,
     },
 
     -- Add server names here to enable them. Config lives in lsp/<name>.lua
     lsp = {
         "lua_ls",
+        "gopls",
+        "templ",
+        "html",
+        "htmx",
+        "tailwindcss",
+        "emmet_ls",
+        "ts_ls",
     },
 
     formatters = {
         lua        = { "stylua"   },
         python     = { "black"    },
         go         = { "gofmt"    },
+        templ      = { "templ"    },
         javascript = { "prettier" },
+        typescript = { "prettier" },
         html       = { "prettier" },
         css        = { "prettier" },
         json       = { "prettier" },

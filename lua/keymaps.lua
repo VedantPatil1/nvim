@@ -7,14 +7,44 @@ vim.g.mapleader = " "
 
 -- Which-key groups
 wk.add({
-    { "<leader>c", group = "code" },
-    { "<leader>f", group = "find" },
-    { "<leader>g", group = "git"  },
-    { "<leader>u", group = "ui"   },
+    { "<leader>a", group = "ai"      },
+    { "<leader>c", group = "code"    },
+    { "<leader>f", group = "find"    },
+    { "<leader>g", group = "git"     },
+    { "<leader>u", group = "ui"      },
+    { "<leader>w", group = "window"  },
 })
 
--- LSP completion: manual trigger
-keymap("i", "<C-Space>", function() vim.lsp.completion.trigger() end, { desc = "Trigger LSP completion" })
+local s = require("settings")
+
+-- AI: Opencode
+if s.enable.opencode then
+    local api = function() return require("opencode.api") end
+    keymap({ "n", "x" }, "<leader>aa", function() api().toggle()       end, { desc = "Toggle opencode" })
+    keymap({ "n", "x" }, "<leader>ai", function() api().open_input()   end, { desc = "Opencode open input" })
+    keymap({ "n", "x" }, "<leader>aq", function() api().quick_chat()   end, { desc = "Opencode quick chat" })
+    keymap({ "n", "x" }, "<leader>am", function() api().mention_file() end, { desc = "Opencode mention file" })
+    keymap({ "n", "x" }, "<leader>as", function() api().select_agent() end, { desc = "Opencode select agent" })
+    keymap({ "n", "t" }, "<C-.>",      function() api().toggle_focus() end, { desc = "Toggle opencode focus" })
+end
+
+-- AI: Claude Code
+if s.enable.claudecode then
+    keymap({ "n", "t" }, "<C-.>",      "<cmd>ClaudeCodeFocus<cr>",     { desc = "Focus Claude Code" })
+    keymap({ "n", "x" }, "<leader>aa", "<cmd>ClaudeCode<cr>",          { desc = "Toggle Claude Code" })
+    keymap({ "n", "x" }, "<leader>as", "<cmd>ClaudeCodeSend<cr>",      { desc = "Send to Claude Code" })
+    keymap("n",          "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>",     { desc = "Add buffer to Claude Code" })
+    keymap("n",          "<leader>ai", "<cmd>ClaudeCodeDiffAccept<cr>", { desc = "Accept diff" })
+    keymap("n",          "<leader>ax", "<cmd>ClaudeCodeDiffDeny<cr>",   { desc = "Deny diff" })
+end
+
+-- AI: Copilot
+if s.enable.copilot then
+    keymap("i", "<M-a>", function() require("copilot.suggestion").accept()      end, { desc = "Copilot accept" })
+    keymap("i", "<M-]>", function() require("copilot.suggestion").next()        end, { desc = "Copilot next" })
+    keymap("i", "<M-[>", function() require("copilot.suggestion").prev()        end, { desc = "Copilot prev" })
+    keymap("i", "<M-e>", function() require("copilot.suggestion").dismiss()     end, { desc = "Copilot dismiss" })
+end
 
 -- Diagnostics
 keymap("n", "gl", function() vim.diagnostic.open_float() end, { desc = "Show line diagnostics" })
@@ -54,6 +84,10 @@ keymap(xo, "if", ts("@function.inner", "textobjects"), { desc = "inner function"
 keymap(xo, "ac", ts("@class.outer",    "textobjects"), { desc = "outer class" })
 keymap(xo, "ic", ts("@class.inner",    "textobjects"), { desc = "inner class" })
 keymap(xo, "as", ts("@local.scope",    "locals"),      { desc = "scope" })
+
+-- Terminal
+keymap("n", "<leader>wt", "<cmd>15split | terminal<CR>", { desc = "Open terminal (hsplit)" })
+keymap("t", "<Esc>",      "<C-\\><C-n>",                 { desc = "Exit terminal mode" })
 
 -- LSP: buffer-local keymaps (set on attach)
 autocmd("LspAttach", {

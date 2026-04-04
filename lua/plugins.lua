@@ -40,6 +40,54 @@ require("nvim-treesitter-textobjects").setup({
 vim.pack.add({ { src = "https://github.com/stevearc/conform.nvim" } })
 require("conform").setup({ formatters_by_ft = s.formatters })
 
+-- Snippets + Completion
+vim.pack.add({
+    { src = "https://github.com/L3MON4D3/LuaSnip" },
+    { src = "https://github.com/rafamadriz/friendly-snippets" },
+    { src = "https://github.com/hrsh7th/nvim-cmp" },
+    { src = "https://github.com/hrsh7th/cmp-nvim-lsp" },
+    { src = "https://github.com/hrsh7th/cmp-buffer" },
+    { src = "https://github.com/hrsh7th/cmp-path" },
+    { src = "https://github.com/saadparwaiz1/cmp_luasnip" },
+})
+
+local luasnip = require("luasnip")
+local cmp     = require("cmp")
+
+require("luasnip.loaders.from_vscode").lazy_load()
+require("snippets.templ")
+
+cmp.setup({
+    snippet = {
+        expand = function(args) luasnip.lsp_expand(args.body) end,
+    },
+    mapping = cmp.mapping.preset.insert({
+        ["<C-b>"]     = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"]     = cmp.mapping.scroll_docs(4),
+        ["<C-Space>"] = cmp.mapping.complete(),
+        ["<C-e>"]     = cmp.mapping.abort(),
+        ["<CR>"]      = cmp.mapping.confirm({ select = true }),
+    }),
+    sources = cmp.config.sources({
+        { name = "nvim_lsp" },
+        { name = "luasnip"  },
+    }, {
+        { name = "buffer" },
+        { name = "path"   },
+    }),
+    window = {
+        documentation = {
+            border     = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+            max_width  = 80,
+            max_height = 25,
+        },
+    },
+})
+
+-- Dressing (better vim.ui.select / vim.ui.input as floating windows)
+vim.pack.add({ { src = "https://github.com/stevearc/dressing.nvim" } })
+require("dressing").setup()
+
 -- FZF
 vim.pack.add({
     { src = "https://github.com/echasnovski/mini.icons" },
@@ -88,6 +136,26 @@ require("hardtime").setup()
 vim.pack.add({ { src = "https://github.com/nvzone/showkeys" } })
 require("showkeys").setup({ timeout = 1, maxkeys = 4, show_count = true })
 
--- Feature toggles (after plugins are set up)
+-- Copilot (ghost text only, no panel, no cmp source)
+vim.pack.add({ { src = "https://github.com/zbirenbaum/copilot.lua" } })
+require("copilot").setup({
+    suggestion = {
+        enabled      = s.enable.copilot,
+        auto_trigger = s.enable.copilot,
+        keymap       = { accept = false, next = false, prev = false, dismiss = false },
+    },
+    panel     = { enabled = false },
+    filetypes = { markdown = true, help = true },
+})
+
+-- Opencode
+vim.pack.add({ { src = "https://github.com/sudo-tee/opencode.nvim" } })
+require("opencode").setup()
+
+-- Claude Code
+vim.pack.add({ { src = "https://github.com/coder/claudecode.nvim" } })
+require("claudecode").setup()
+
+-- Feature toggles
 if s.enable.hardtime then require("hardtime").enable() end
-if s.enable.showkeys  then vim.cmd("ShowkeysToggle")    end
+if s.enable.showkeys then vim.cmd("ShowkeysToggle")    end

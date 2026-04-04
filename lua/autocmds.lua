@@ -33,17 +33,6 @@ autocmd("FileType", {
     end,
 })
 
--- LSP: native completion autotrigger
-autocmd("LspAttach", {
-    group    = augroup("lsp-completion", { clear = true }),
-    callback = function(args)
-        local client = vim.lsp.get_client_by_id(args.data.client_id)
-        if client and client:supports_method("textDocument/completion") then
-            vim.lsp.completion.enable(true, args.data.client_id, args.buf, { autotrigger = true })
-        end
-    end,
-})
-
 -- LSP: document highlight on cursor hold
 autocmd("LspAttach", {
     group    = augroup("lsp-highlight", { clear = true }),
