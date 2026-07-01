@@ -20,6 +20,8 @@ return {
         "tailwindcss",
         "emmet_ls",
         "ts_ls",
+        "ruff",
+        "ty",
     },
 
     indent = {

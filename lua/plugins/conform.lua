@@ -2,7 +2,7 @@
 
 local formatters = {
 	lua = { "stylua" },
-	python = { "black" },
+	python = { "ruff_format" },
 	go = { "gofmt" },
 	templ = { "templ" },
 	javascript = { "prettier" },
