@@ -54,6 +54,10 @@ keymap(xo, "ac", ts("@class.outer",    "textobjects"), { desc = "outer class" })
 keymap(xo, "ic", ts("@class.inner",    "textobjects"), { desc = "inner class" })
 keymap(xo, "as", ts("@local.scope",    "locals"),      { desc = "scope" })
 
+-- Window
+keymap("n", "<leader>wv", "<cmd>vsplit<CR>", { desc = "Split vertically" })
+keymap("n", "<leader>ws", "<cmd>split<CR>",  { desc = "Split horizontally" })
+
 -- Terminal
 keymap("n", "<leader>wt", "<cmd>15split | terminal<CR>", { desc = "Open terminal (hsplit)" })
 keymap("t", "<Esc>",      "<C-\\><C-n>",                 { desc = "Exit terminal mode" })
