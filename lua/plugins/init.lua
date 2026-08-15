@@ -1,0 +1,8 @@
+require("plugins.utils")
+require("plugins.treesitter")
+require("plugins.colorschemes")
+require("plugins.conform")
+require("plugins.cmp")
+require("plugins.fzf")
+require("plugins.ai")
+require("plugins.todos")

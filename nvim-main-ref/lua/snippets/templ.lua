@@ -1,10 +1,10 @@
-local ls  = require("luasnip")
-local s   = ls.snippet
-local i   = ls.insert_node
-local fmt = require("luasnip.extras.fmt").fmt
+local luasnip = require('luasnip')
+local s = luasnip.snippet
+local i = luasnip.insert_node
+local fmt = require('luasnip.extras.fmt').fmt
 
-ls.add_snippets("templ", {
-    s("base", fmt([[
+luasnip.add_snippets('templ', {
+  s('base', fmt([[
 templ {name}(title string) {{
     <!DOCTYPE html>
     <html lang="en">
@@ -21,12 +21,12 @@ templ {name}(title string) {{
     </body>
     </html>
 }}{0}
-    ]], {
-        name    = i(1, "BaseLayout"),
-        cssPath = i(2, "/static/css/style.css"),
-        [0]     = i(0),
-    }, {
-        strict     = false,
-        delimiters = "{}",
-    })),
+  ]], {
+    name = i(1, "BaseLayout"),
+    cssPath = i(2, "/static/css/style.css"),
+    [0] = i(0)
+  }, {
+    strict = false,
+    delimiters = "{}",
+  })),
 })
